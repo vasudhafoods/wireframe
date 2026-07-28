@@ -196,6 +196,58 @@
   .rec-body .t{ font-size:14.5px; font-weight:700; margin-bottom:4px; }
   .rec-body .m{ font-size:12px; color:var(--accent); font-weight:600; }
 
+  /* CONTENT HUB (Reels + Blog + SEO) */
+  .hub-block{ margin-bottom:28px; }
+  .hub-block:last-child{ margin-bottom:0; }
+  .hub-block-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+  .hub-block-head h3{ font-size:16px; margin:0; font-weight:800; }
+  .hub-block-head a{ font-size:12.5px; color:var(--accent); font-weight:600; }
+  .reel-row{ display:flex; gap:14px; overflow-x:auto; padding-bottom:6px; -webkit-overflow-scrolling:touch; }
+  .reel-card{ flex:0 0 150px; }
+  .reel-thumb{
+    height:250px; border-radius:var(--radius-md); position:relative;
+    background:#f4f5f7;
+  }
+  .reel-play{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,0.9);
+    display:flex; align-items:center; justify-content:center; font-size:14px; color:var(--ink);
+  }
+  .reel-views{
+    position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.55); color:#fff;
+    font-size:10.5px; font-weight:700; padding:3px 8px; border-radius:999px;
+  }
+  .reel-cap{ margin-top:8px; font-size:12.5px; font-weight:600; line-height:1.35; }
+  .ig-handle-row{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--heritage-bg); border-radius:var(--radius-md);
+    padding:14px 18px; margin-top:14px;
+  }
+  .ig-handle-row .t{ font-size:13.5px; font-weight:700; color:var(--heritage); }
+  .ig-handle-row .d{ font-size:12px; color:var(--ink-soft); }
+  .seo-links{ display:flex; flex-wrap:wrap; gap:10px; }
+  .seo-chip{
+    background:#f4f5f7; border-radius:999px; padding:9px 16px;
+    font-size:12.5px; font-weight:600; color:var(--ink-soft);
+  }
+
+  /* TRUSTED BY + ABOUT/SEO BLOCK */
+  .brand-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .brand-card{
+    border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden;
+    background:#fff;
+  }
+  .brand-logo{
+    height:120px; background:#f4f5f7;
+    display:flex; align-items:center; justify-content:center;
+    font-size:15px; font-weight:700; color:var(--ink-soft); text-align:center; padding:10px;
+  }
+  .brand-bar{ height:6px; }
+  .about-block{ margin-top:28px; padding-top:24px; border-top:1px solid var(--line); }
+  .about-block h3{ font-size:19px; margin:0 0 12px; font-weight:800; }
+  .about-block p{ font-size:14px; color:var(--ink-soft); line-height:1.75; margin:0 0 12px; max-width:900px; }
+  .about-block a.read-more{ font-size:14px; color:var(--accent); font-weight:600; }
+
   /* NEWSLETTER */
   .newsletter{ background:var(--hero-bg); padding:44px 30px; text-align:center; }
   .newsletter h2{ font-size:24px; margin:0 0 8px; font-weight:800; }
@@ -302,6 +354,16 @@
     /* reviews / recipes */
     .rev-grid, .rec-grid{ grid-template-columns:1fr; gap:14px; }
     .rating-badge{ flex-wrap:wrap; }
+
+    /* content hub */
+    .reel-card{ flex:0 0 120px; }
+    .reel-thumb{ height:200px; }
+    .ig-handle-row{ flex-direction:column; align-items:flex-start; gap:10px; }
+
+    /* trusted by / about */
+    .brand-grid{ grid-template-columns:1fr 1fr; gap:12px; }
+    .brand-logo{ height:90px; font-size:13px; }
+    .about-block{ margin-top:22px; padding-top:18px; }
 
     /* newsletter */
     .newsletter{ padding:32px 18px; }
@@ -614,23 +676,102 @@
     </div>
   </section>
 
-  <!-- RECIPES -->
+  <!-- CONTENT HUB: Instagram Reels + Blog + SEO Guides (new, last content section) -->
   <section>
     <div class="sec-pad">
-      <div class="sec-head"><h2>Recipes &amp; stories</h2><a>Visit the blog →</a></div>
-      <div class="rec-grid">
-        <div class="rec-card">
-          <div class="rec-img placeholder">Recipe photo</div>
-          <div class="rec-body"><div class="t">5 Sattvic Breakfasts for Busy Mornings</div><div class="m">Read more</div></div>
+      <div class="sec-head"><h2>From our world</h2><a>Visit the blog →</a></div>
+
+      <div class="hub-block">
+        <div class="hub-block-head"><h3>Instagram Reels</h3><a>Follow @vasudhafoods →</a></div>
+        <div class="reel-row">
+          <div class="reel-card">
+            <div class="reel-thumb placeholder"><span class="reel-play">▶</span><span class="reel-views">12.4k</span></div>
+            <div class="reel-cap">3-min Dal Khichadi recipe</div>
+          </div>
+          <div class="reel-card">
+            <div class="reel-thumb placeholder"><span class="reel-play">▶</span><span class="reel-views">8.1k</span></div>
+            <div class="reel-cap">Inside our temple kitchen</div>
+          </div>
+          <div class="reel-card">
+            <div class="reel-thumb placeholder"><span class="reel-play">▶</span><span class="reel-views">21k</span></div>
+            <div class="reel-cap">Why we never use onion or garlic</div>
+          </div>
+          <div class="reel-card">
+            <div class="reel-thumb placeholder"><span class="reel-play">▶</span><span class="reel-views">5.6k</span></div>
+            <div class="reel-cap">Millet noodles, 4 ways</div>
+          </div>
+          <div class="reel-card">
+            <div class="reel-thumb placeholder"><span class="reel-play">▶</span><span class="reel-views">9.9k</span></div>
+            <div class="reel-cap">Customer unboxing: Festival pack</div>
+          </div>
         </div>
-        <div class="rec-card">
-          <div class="rec-img placeholder">Recipe photo</div>
-          <div class="rec-body"><div class="t">What Makes Food Truly Hare Krishna?</div><div class="m">Read more</div></div>
+        <div class="ig-handle-row">
+          <div><div class="t">@vasudhafoods on Instagram</div><div class="d">New reels every week — recipes, kitchen stories &amp; customer love</div></div>
+          <span class="btn sm outline">Follow us</span>
         </div>
-        <div class="rec-card">
-          <div class="rec-img placeholder">Recipe photo</div>
-          <div class="rec-body"><div class="t">Millets 101: A Sattvic Kitchen Staple</div><div class="m">Read more</div></div>
+      </div>
+
+      <div class="hub-block">
+        <div class="hub-block-head"><h3>Recipes &amp; stories</h3><a>Read more →</a></div>
+        <div class="rec-grid">
+          <div class="rec-card">
+            <div class="rec-img placeholder">Recipe photo</div>
+            <div class="rec-body"><div class="t">5 Sattvic Breakfasts for Busy Mornings</div><div class="m">Read more</div></div>
+          </div>
+          <div class="rec-card">
+            <div class="rec-img placeholder">Recipe photo</div>
+            <div class="rec-body"><div class="t">What Makes Food Truly Hare Krishna?</div><div class="m">Read more</div></div>
+          </div>
+          <div class="rec-card">
+            <div class="rec-img placeholder">Recipe photo</div>
+            <div class="rec-body"><div class="t">Millets 101: A Sattvic Kitchen Staple</div><div class="m">Read more</div></div>
+          </div>
         </div>
+      </div>
+
+      <div class="hub-block">
+        <div class="hub-block-head"><h3>Explore more topics</h3></div>
+        <div class="seo-links">
+          <span class="seo-chip">What is Sattvic Food?</span>
+          <span class="seo-chip">Millets vs Rice: Health Benefits</span>
+          <span class="seo-chip">No Onion No Garlic Cooking Guide</span>
+          <span class="seo-chip">Upvas &amp; Fasting Foods</span>
+          <span class="seo-chip">ISKCON Prasadam Explained</span>
+          <span class="seo-chip">Gluten-Free Millet Noodles Guide</span>
+          <span class="seo-chip">Healthy Kids' Lunchbox Ideas</span>
+          <span class="seo-chip">Festival Food Traditions in India</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUSTED BY + ABOUT VASUDHA (new, SEO/trust block) -->
+  <section>
+    <div class="sec-pad">
+      <div class="sec-head"><h2>Brands that trust us</h2></div>
+      <div class="brand-grid">
+        <div class="brand-card">
+          <div class="brand-logo placeholder">Retail Partner Logo</div>
+          <div class="brand-bar" style="background:#3b3b8f;"></div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-logo placeholder">Marketplace Logo</div>
+          <div class="brand-bar" style="background:#8a2e2e;"></div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-logo placeholder">Corporate Gifting Partner</div>
+          <div class="brand-bar" style="background:#181c22;"></div>
+        </div>
+        <div class="brand-card">
+          <div class="brand-logo placeholder">Temple &amp; Trust Partner</div>
+          <div class="brand-bar" style="background:#7a2b3a;"></div>
+        </div>
+      </div>
+
+      <div class="about-block">
+        <h3>Vasudha Foods: Sattvic Food, from the House of Hare Krishna</h3>
+        <p>Vasudha Foods is India's trusted name in Sattvic, no-onion-no-garlic food — bringing the same recipes served in ISKCON temple kitchens into everyday homes. From ready-to-eat meals like Dal Khichadi and Rajma Chawal to millet noodles, cookies and festive snacks, every product is prepared with pure, mindful ingredients and no preservatives or maida. Whether you're observing Upvas, cooking for a joint family, or simply choosing a cleaner way to eat, Vasudha makes wholesome, devotional food easy to find and quick to prepare. Our combo packs, gifting boxes and pan-India delivery bring Sattvic nourishment to thousands of families, with the same care and consistency as a temple kitchen.</p>
+        <a class="read-more">Read More...</a>
       </div>
     </div>
   </section>
