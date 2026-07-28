@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vasudha Foods — Homepage Blueprint</title>
+<style>
+  :root{
+    --ink:#1f2328;
+    --ink-soft:#5b6470;
+    --line:#e3e6ea;
+    --bg:#f7f8fa;
+    --card:#ffffff;
+    --hero-bg:#eef1f6;
+    --pill-bg:#eef2ff;
+    --pill-text:#3355d8;
+    --accent:#3b6ef6;
+    --accent-hover:#2f57cc;
+    --heritage:#b3541e;
+    --heritage-bg:#fdf1e7;
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+  }
+  .wrap{max-width:1240px; margin:0 auto; padding:20px 20px 64px;}
+  .doc-title{
+    display:flex; align-items:center; gap:10px;
+    font-size:20px; font-weight:700; margin-bottom:18px;
+  }
+  .doc-title .ic{
+    width:26px; height:26px; border-radius:6px; border:1.5px solid var(--ink);
+    display:flex; align-items:center; justify-content:center; font-size:13px;
+  }
+  section{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .tag{
+    font-size:11px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    color:var(--ink-soft); padding:10px 22px 0;
+  }
+  .pill{
+    display:inline-block; background:var(--pill-bg); color:var(--pill-text);
+    font-size:13px; font-weight:600; padding:7px 16px; border-radius:999px;
+  }
+  .pill.heritage{ background:var(--heritage-bg); color:var(--heritage); }
+  .btn{
+    display:inline-block; padding:14px 26px; border-radius:12px;
+    font-size:15px; font-weight:600; text-decoration:none; cursor:default;
+  }
+  .btn.primary{ background:var(--accent); color:#fff; }
+  .btn.outline{ background:#fff; color:var(--ink); border:1px solid #d6dae0; }
+  .btn.sm{ padding:10px 18px; font-size:13px; border-radius:10px; }
+  .placeholder{
+    border:1.5px dashed #c7cdd6; border-radius:var(--radius-md);
+    background:#fbfcfd;
+    display:flex; align-items:center; justify-content:center;
+    color:#8b93a0; font-size:14px; text-align:center; padding:16px;
+  }
+
+  /* OFFER BAR */
+  .offer-bar{
+    background:var(--ink); color:#fff; text-align:center;
+    font-size:12.5px; font-weight:600; letter-spacing:.02em; padding:9px 20px;
+  }
+  .offer-bar span{ color:#ffcb8a; }
+
+  /* HEADER */
+  .header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 26px;
+  }
+  .brand .eyebrow{ font-size:12.5px; color:var(--ink-soft); margin-bottom:2px; }
+  .brand .logo{ font-size:19px; font-weight:800; letter-spacing:.01em; }
+  .nav{ display:flex; gap:26px; font-size:14.5px; color:var(--ink); }
+  .utility{ display:flex; gap:22px; font-size:14px; color:var(--ink-soft); }
+
+  /* HERO */
+  .hero{ background:var(--hero-bg); padding:36px 30px 40px; }
+  .hero-grid{ display:grid; grid-template-columns:1.05fr 1fr; gap:36px; align-items:center; }
+  .hero-copy h1{ font-size:38px; line-height:1.15; margin:16px 0 14px; font-weight:800; }
+  .hero-copy p{ font-size:15.5px; color:var(--ink-soft); line-height:1.6; margin:0 0 22px; max-width:480px; }
+  .hero-ctas{ display:flex; gap:12px; }
+  .hero-img{ height:420px; }
+
+  /* TRUST STRIP */
+  .trust{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:12px;
+    padding:18px;
+  }
+  .trust-card{
+    background:#f4f5f7; border-radius:var(--radius-md);
+    padding:20px 16px; font-size:15px; font-weight:600;
+  }
+
+  /* WHY SATTVIC */
+  .sattvic-band{ padding:26px 30px 30px; background:var(--heritage-bg); }
+  .sattvic-head{ display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+  .sattvic-head .glyph{
+    width:34px; height:34px; border-radius:50%; border:1.5px solid var(--heritage);
+    flex:0 0 auto;
+  }
+  .sattvic-head h3{ font-size:18px; margin:0 0 2px; }
+  .sattvic-head p{ font-size:13px; color:var(--ink-soft); margin:0; }
+  .sattvic-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .sattvic-item{
+    background:#fff; border-radius:var(--radius-md); padding:16px;
+    font-size:13.5px; font-weight:600; display:flex; align-items:center; gap:10px;
+  }
+  .sattvic-item .dot{ width:8px; height:8px; border-radius:50%; background:var(--heritage); flex:0 0 auto; }
+
+  /* SECTION HEADS */
+  .sec-pad{ padding:30px; }
+  .sec-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:20px; }
+  .sec-head h2{ font-size:24px; margin:0; font-weight:800; }
+  .sec-head a{ font-size:13.5px; color:var(--accent); font-weight:600; }
+
+  /* CATEGORIES */
+  .cat-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .cat-card{ position:relative; }
+  .cat-img{ height:150px; }
+  .cat-label{ margin-top:10px; font-size:15px; font-weight:700; }
+  .cat-sub{ margin-top:2px; font-size:12px; color:var(--ink-soft); }
+
+  /* BUNDLE UPSELL */
+  .bundle-banner{
+    display:flex; align-items:center; justify-content:space-between;
+    background:var(--heritage-bg); border-radius:var(--radius-md);
+    padding:16px 22px; margin-top:16px;
+  }
+  .bundle-banner .t{ font-size:14.5px; font-weight:700; color:var(--heritage); }
+  .bundle-banner .d{ font-size:12.5px; color:var(--ink-soft); }
+
+  /* PRODUCTS */
+  .prod-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .prod-grid.cols-3{ grid-template-columns:repeat(3,1fr); }
+  .prod-card{ border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden; }
+  .prod-img{ height:150px; position:relative; }
+  .sattvic-tag{
+    position:absolute; top:10px; left:10px; background:#fff; border:1px solid var(--heritage);
+    color:var(--heritage); font-size:10.5px; font-weight:700; padding:4px 9px; border-radius:999px;
+  }
+  .prod-body{ padding:14px; }
+  .prod-body .name{ font-size:14.5px; font-weight:700; margin-bottom:4px; }
+  .prod-body .stars{ color:#f5a524; font-size:12px; margin-bottom:6px; }
+  .prod-body .price{ font-size:15px; font-weight:800; margin-bottom:10px; }
+
+  /* BRAND STORY */
+  .story-grid{ display:grid; grid-template-columns:1fr 1.1fr; gap:36px; align-items:center; }
+  .story-img{ height:280px; }
+  .story-copy .pill{ margin-bottom:14px; }
+  .story-copy h2{ font-size:26px; margin:0 0 12px; font-weight:800; }
+  .story-copy p{ font-size:15px; color:var(--ink-soft); line-height:1.65; margin:0 0 18px; }
+  .stat-row{ display:flex; gap:28px; margin-bottom:20px; }
+  .stat-row .num{ font-size:20px; font-weight:800; color:var(--heritage); }
+  .stat-row .lbl{ font-size:11.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.03em; }
+
+  /* WHY CHOOSE */
+  .pillar-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .pillar{ text-align:center; padding:22px 14px; background:#f4f5f7; border-radius:var(--radius-md); }
+  .pillar .ic{
+    width:44px; height:44px; border-radius:50%; background:#fff; border:1.5px solid var(--line);
+    margin:0 auto 12px;
+  }
+  .pillar .t{ font-size:14.5px; font-weight:700; margin-bottom:4px; }
+  .pillar .d{ font-size:12.5px; color:var(--ink-soft); }
+
+  /* REVIEWS */
+  .rating-badge{
+    display:flex; align-items:center; gap:10px; margin-bottom:18px;
+    font-size:14px; font-weight:700;
+  }
+  .rating-badge .big{ font-size:22px; color:#f5a524; }
+  .rating-badge .sub{ font-size:12.5px; color:var(--ink-soft); font-weight:500; }
+  .rev-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .rev-card{ border:1px solid var(--line); border-radius:var(--radius-md); padding:16px; }
+  .rev-thumb{ height:110px; margin-bottom:12px; }
+  .rev-stars{ color:#f5a524; font-size:12.5px; margin-bottom:8px; }
+  .rev-quote{ font-size:13.5px; color:var(--ink); line-height:1.5; margin-bottom:10px; }
+  .rev-name{ font-size:12px; color:var(--ink-soft); font-weight:600; }
+
+  /* RECIPES */
+  .rec-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .rec-card{ border:1px solid var(--line); border-radius:var(--radius-md); overflow:hidden; }
+  .rec-img{ height:140px; }
+  .rec-body{ padding:14px; }
+  .rec-body .t{ font-size:14.5px; font-weight:700; margin-bottom:4px; }
+  .rec-body .m{ font-size:12px; color:var(--accent); font-weight:600; }
+
+  /* NEWSLETTER */
+  .newsletter{ background:var(--hero-bg); padding:44px 30px; text-align:center; }
+  .newsletter h2{ font-size:24px; margin:0 0 8px; font-weight:800; }
+  .newsletter p{ font-size:14.5px; color:var(--ink-soft); margin:0 0 22px; }
+  .email-row{ display:flex; justify-content:center; gap:10px; }
+  .email-input{
+    width:280px; height:48px; border-radius:12px; border:1px solid #d6dae0; background:#fff;
+    padding:0 16px; font-size:14px; color:#9aa2ad; display:flex; align-items:center;
+  }
+
+  /* FOOTER */
+  .footer{ background:#181c22; color:#fff; padding:36px 30px 24px; }
+  .footer-heritage{
+    display:flex; align-items:center; gap:12px; padding-bottom:22px; margin-bottom:22px;
+    border-bottom:1px solid #2b3038;
+  }
+  .footer-heritage .glyph{ width:36px; height:36px; border-radius:50%; border:1.5px solid #e08a3c; flex:0 0 auto; }
+  .footer-heritage .t{ font-size:14px; font-weight:700; }
+  .footer-heritage .s{ font-size:12.5px; color:#9aa2ad; }
+  .footer-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:26px; margin-bottom:26px; }
+  .footer-col .h{ font-size:13px; font-weight:700; margin-bottom:12px; }
+  .footer-col .l{ font-size:12.5px; color:#9aa2ad; line-height:2.2; }
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:18px; border-top:1px solid #2b3038; font-size:12px; color:#7d8590;
+  }
+  .socials{ display:flex; gap:10px; }
+  .soc-ic{ width:26px; height:26px; border-radius:50%; border:1.5px solid #3a4049; }
+
+  .annotate{ font-size:12px; color:#9aa2ad; padding:0 22px 10px; }
+
+  .hamburger{ display:none; font-size:20px; }
+
+  .mobile-sticky-demo{ display:none; }
+  .msd-label{
+    font-size:10.5px; color:var(--ink-soft); text-align:center; padding:8px 0 4px; letter-spacing:.03em; text-transform:uppercase;
+  }
+  .msd-bar{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    background:#fff; border:1px solid var(--line); border-radius:14px;
+    padding:10px 14px; margin:0 16px 16px;
+    box-shadow:0 -6px 16px rgba(0,0,0,0.06);
+  }
+  .msd-name{ font-size:13px; font-weight:700; }
+  .msd-price{ font-size:12.5px; color:var(--ink-soft); }
+
+  /* ===================== MOBILE ===================== */
+  @media (max-width:760px){
+    .wrap{ padding:14px 12px 100px; }
+
+    /* header */
+    .header{ padding:14px 16px; }
+    .nav{ display:none; }
+    .hamburger{ display:block; }
+    .utility span:not(:last-child){ display:none; }
+
+    /* offer bar */
+    .offer-bar{ font-size:11px; padding:8px 14px; }
+
+    /* hero */
+    .hero{ padding:24px 18px 28px; }
+    .hero-grid{ grid-template-columns:1fr; gap:20px; }
+    .hero-copy h1{ font-size:27px; }
+    .hero-copy p{ max-width:100%; }
+    .hero-ctas{ flex-direction:column; }
+    .hero-ctas .btn{ text-align:center; }
+    .hero-img{ height:220px; order:-1; }
+
+    /* trust strip — horizontal scroll instead of squeeze */
+    .trust{
+      display:flex; overflow-x:auto; grid-template-columns:none;
+      padding:14px; -webkit-overflow-scrolling:touch;
+    }
+    .trust-card{ flex:0 0 auto; white-space:nowrap; padding:14px 18px; }
+
+    /* why sattvic / heritage grid */
+    .sattvic-band{ padding:20px 18px 24px; }
+    .sattvic-grid{ grid-template-columns:1fr 1fr; }
+
+    /* section padding */
+    .sec-pad{ padding:22px 18px; }
+    .sec-head{ flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:16px; }
+    .sec-head h2{ font-size:20px; }
+
+    /* categories */
+    .cat-grid{ grid-template-columns:1fr 1fr; gap:12px; }
+    .cat-img{ height:110px; }
+
+    /* products — 2 up regardless of desktop 3/4 col */
+    .prod-grid, .prod-grid.cols-3{ grid-template-columns:1fr 1fr; gap:12px; }
+    .prod-img{ height:110px; }
+
+    /* bundle banner */
+    .bundle-banner{ flex-direction:column; align-items:flex-start; gap:12px; }
+
+    /* brand story */
+    .story-grid{ grid-template-columns:1fr; gap:20px; }
+    .story-img{ height:200px; }
+    .stat-row{ gap:20px; flex-wrap:wrap; }
+
+    /* why choose */
+    .pillar-grid{ grid-template-columns:1fr 1fr; gap:12px; }
+
+    /* reviews / recipes */
+    .rev-grid, .rec-grid{ grid-template-columns:1fr; gap:14px; }
+    .rating-badge{ flex-wrap:wrap; }
+
+    /* newsletter */
+    .newsletter{ padding:32px 18px; }
+    .email-row{ flex-direction:column; align-items:center; }
+    .email-input{ width:100%; max-width:320px; }
+
+    /* footer */
+    .footer{ padding:28px 18px 20px; }
+    .footer-grid{ grid-template-columns:1fr 1fr; gap:20px; }
+    .footer-heritage{ align-items:flex-start; }
+    .footer-bottom{ flex-direction:column; gap:12px; align-items:flex-start; }
+
+    /* sticky mobile add-to-cart demo */
+    .mobile-sticky-demo{ display:block; position:sticky; bottom:0; background:transparent; z-index:5; }
+  }
+
+  @media (max-width:420px){
+    .cat-grid, .prod-grid, .prod-grid.cols-3, .pillar-grid, .footer-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="doc-title"><span class="ic">▤</span> Vasudha Foods Homepage Blueprint</div>
+
+  <!-- OFFER BAR (new) -->
+  <section>
+    <div class="offer-bar">Free shipping on orders over ₹499 · <span>Festival Upvas Pack — 15% off this week</span></div>
+  </section>
+
+  <!-- HEADER -->
+  <section>
+    <div class="header">
+      <div class="brand">
+        <div class="eyebrow">House of Hare Krishna</div>
+        <div class="logo">VASUDHA FOODS</div>
+      </div>
+      <div class="nav">
+        <span>Shop</span><span>Ready Meals</span><span>Millets</span><span>Snacks</span><span>Combos</span><span>About</span>
+      </div>
+      <div class="hamburger">☰</div>
+      <div class="utility"><span>Search</span><span>Account</span><span>Cart</span></div>
+    </div>
+  </section>
+
+  <!-- HERO -->
+  <section>
+    <div class="hero">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="pill heritage">From the House of Hare Krishna</span>
+          <h1>Sattvic food made for everyday life</h1>
+          <p>No onion. No garlic. Ready-to-eat meals, millet products and wholesome snacks — prepared with devotion, for modern families.</p>
+          <div class="hero-ctas">
+            <span class="btn primary">Shop best sellers</span>
+            <span class="btn outline">Explore categories</span>
+          </div>
+        </div>
+        <div class="hero-img placeholder">Product packs + prepared food lifestyle image</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <section>
+    <div class="trust">
+      <div class="trust-card">No onion</div>
+      <div class="trust-card">No garlic</div>
+      <div class="trust-card">Ready in minutes</div>
+      <div class="trust-card">Premium ingredients</div>
+      <div class="trust-card">Free shipping ₹499+</div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section>
+    <div class="sec-pad">
+      <div class="sec-head"><h2>Shop by category</h2><a>View all →</a></div>
+      <div class="cat-grid">
+        <div class="cat-card"><div class="cat-img placeholder">Ready Meals</div><div class="cat-label">Ready Meals</div><div class="cat-sub">Khichadi, rice bowls &amp; more</div></div>
+        <div class="cat-card"><div class="cat-img placeholder">Millet Products</div><div class="cat-label">Millet Products</div><div class="cat-sub">6 varieties — Foxtail to Kodo</div></div>
+        <div class="cat-card"><div class="cat-img placeholder">Snacks</div><div class="cat-label">Snacks</div><div class="cat-sub">Chikki, cookies &amp; namkeen</div></div>
+        <div class="cat-card"><div class="cat-img placeholder">Combo Packs</div><div class="cat-label">Combo Packs</div><div class="cat-sub">Curated bundles, better value</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEST SELLERS -->
+  <section>
+    <div class="sec-pad">
+      <div class="sec-head"><h2>Best sellers</h2><a>Shop all →</a></div>
+      <div class="prod-grid">
+        <div class="prod-card">
+          <div class="prod-img placeholder"><span class="sattvic-tag">Sattvic</span>Product photo</div>
+          <div class="prod-body">
+            <div class="name">Foxtail Millet Noodles</div>
+            <div class="stars">★★★★☆ (128)</div>
+            <div class="price">₹149</div>
+            <span class="btn sm primary">Add to Cart</span>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img placeholder"><span class="sattvic-tag">Sattvic</span>Product photo</div>
+          <div class="prod-body">
+            <div class="name">Dal Khichadi, Ready to Eat</div>
+            <div class="stars">★★★★★ (204)</div>
+            <div class="price">₹99</div>
+            <span class="btn sm primary">Add to Cart</span>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img placeholder"><span class="sattvic-tag">Sattvic</span>Product photo</div>
+          <div class="prod-body">
+            <div class="name">Moongdal Halwa</div>
+            <div class="stars">★★★★☆ (76)</div>
+            <div class="price">₹99</div>
+            <span class="btn sm primary">Add to Cart</span>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img placeholder"><span class="sattvic-tag">Sattvic</span>Product photo</div>
+          <div class="prod-body">
+            <div class="name">Millet Chikki Bars</div>
+            <div class="stars">★★★★☆ (52)</div>
+            <div class="price">₹129</div>
+            <span class="btn sm primary">Add to Cart</span>
+          </div>
+        </div>
+      </div>
+      <div class="bundle-banner">
+        <div><div class="t">Build your own Sattvic combo — save up to 20%</div><div class="d">Mix any 3 ready meals or millet packs</div></div>
+        <span class="btn sm outline">Build a Combo</span>
+      </div>
+    </div>
+    <div class="mobile-sticky-demo">
+      <div class="msd-label">Mobile only · sticky on product scroll</div>
+      <div class="msd-bar">
+        <div><div class="msd-name">Foxtail Millet Noodles</div><div class="msd-price">₹149</div></div>
+        <span class="btn sm primary">Add to Cart</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STORY (moved up, right after Best Sellers) -->
+  <section>
+    <div class="sec-pad">
+      <div class="story-grid">
+        <div class="story-img placeholder">Founder / temple-kitchen imagery</div>
+        <div class="story-copy">
+          <span class="pill heritage">Our Heritage</span>
+          <h2>Born from the House of Hare Krishna</h2>
+          <p>Vasudha means "the nourishing earth." Every recipe follows the same Sattvic principles served in ISKCON temple kitchens — pure, mindful, and made with devotion, not adapted for a trend.</p>
+          <div class="stat-row">
+            <div><div class="num">XX+</div><div class="lbl">Years of Tradition</div></div>
+            <div><div class="num">XX</div><div class="lbl">Temple Kitchens</div></div>
+            <div><div class="num">XXk+</div><div class="lbl">Devotees Served</div></div>
+          </div>
+          <span class="btn outline">Read our story</span>
+        </div>
+      </div>
+      <div class="sattvic-grid" style="margin-top:26px;">
+        <div class="sattvic-item"><span class="dot"></span>No onion or garlic, ever</div>
+        <div class="sattvic-item"><span class="dot"></span>Prepared with devotion</div>
+        <div class="sattvic-item"><span class="dot"></span>ISKCON heritage, since founding</div>
+        <div class="sattvic-item"><span class="dot"></span>No preservatives or maida</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MILLET NOODLES (trimmed to 3, count added to shop-all link) -->
+  <section>
+    <div class="sec-pad">
+      <div class="sec-head"><h2>Millet Noodles</h2><a>Shop all Noodles → (6 varieties)</a></div>
+      <div class="prod-grid cols-3">
+        <div class="prod-card">
+          <div class="prod-img placeholder"><span class="sattvic-tag">Sattvic</span>Product photo</div>
+          <div class="prod-body">
+            <div class="name">Foxtail Millet Noodles</div>
+            <div class="stars">★★★★☆ (128)</div>
+            <div class="price">₹149</div>
+            <span class="btn sm primary">Add to Cart</span>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img placeholder"><span class="sattvic-tag">Sattvic</span>Product photo</div>
+          <div class="prod-body">
+            <div class="name">Finger Millet Noodles</div>
+            <div class="stars">★★★★★ (94)</div>
+            <div class="price">₹149</div>
+            <span class="btn sm primary">Add to Cart</span>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img placeholder"><span class="sattvic-tag">Sattvic</span>Product photo</div>
+          <div class="prod-body">
+            <div class="name">Pearl Millet Noodles</div>
+            <div class="stars">★★★★☆ (61)</div>
+            <div class="price">₹149</div>
+            <span class="btn sm primary">Add to Cart</span>
+          </div>
+        </div>
+      </div>
+      <div class="annotate" style="padding:12px 0 0;">Gluten-free · No Maida · Kids' lunchbox friendly</div>
+    </div>
+  </section>
+
+  <!-- MORE FROM VASUDHA (Ready to Eat + Cookies merged) -->
+  <section>
+    <div class="sec-pad">
+      <div class="sec-head"><h2>More from Vasudha</h2><a>Shop Ready to Eat &amp; Snacks →</a></div>
+      <div class="prod-grid cols-3">
+        <div class="prod-card">
+          <div class="prod-img placeholder"><span class="sattvic-tag">Sattvic</span>Product photo</div>
+          <div class="prod-body">
+            <div class="name">Dal Khichadi</div>
+            <div class="stars">★★★★★ (204)</div>
+            <div class="price">₹99</div>
+            <span class="btn sm primary">Add to Cart</span>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img placeholder"><span class="sattvic-tag">Sattvic</span>Product photo</div>
+          <div class="prod-body">
+            <div class="name">Rajma Chawal</div>
+            <div class="stars">★★★★☆ (87)</div>
+            <div class="price">₹109</div>
+            <span class="btn sm primary">Add to Cart</span>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img placeholder"><span class="sattvic-tag">Sattvic</span>Product photo</div>
+          <div class="prod-body">
+            <div class="name">Idly Sambhar</div>
+            <div class="stars">★★★★★ (110)</div>
+            <div class="price">₹99</div>
+            <span class="btn sm primary">Add to Cart</span>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img placeholder"><span class="sattvic-tag">Sattvic</span>Product photo</div>
+          <div class="prod-body">
+            <div class="name">Nava Grain Cookies</div>
+            <div class="stars">★★★★☆ (65)</div>
+            <div class="price">₹119</div>
+            <span class="btn sm primary">Add to Cart</span>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img placeholder"><span class="sattvic-tag">Sattvic</span>Product photo</div>
+          <div class="prod-body">
+            <div class="name">Foxtail Millet Cookies</div>
+            <div class="stars">★★★★★ (58)</div>
+            <div class="price">₹119</div>
+            <span class="btn sm primary">Add to Cart</span>
+          </div>
+        </div>
+        <div class="prod-card">
+          <div class="prod-img placeholder"><span class="sattvic-tag">Sattvic</span>Product photo</div>
+          <div class="prod-body">
+            <div class="name">Millet Chikki Bars</div>
+            <div class="stars">★★★★☆ (52)</div>
+            <div class="price">₹129</div>
+            <span class="btn sm primary">Add to Cart</span>
+          </div>
+        </div>
+      </div>
+      <div class="annotate" style="padding:12px 0 0;">Ready to eat &amp; Snacks · No onion, no garlic, no preservatives</div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE -->
+  <section>
+    <div class="sec-pad">
+      <div class="sec-head"><h2>Why choose Vasudha</h2></div>
+      <div class="pillar-grid">
+        <div class="pillar"><div class="ic"></div><div class="t">Healthy</div><div class="d">Clean, whole-food ingredients</div></div>
+        <div class="pillar"><div class="ic"></div><div class="t">Sattvic</div><div class="d">No onion, no garlic, always</div></div>
+        <div class="pillar"><div class="ic"></div><div class="t">Convenient</div><div class="d">Ready in minutes, any day</div></div>
+        <div class="pillar"><div class="ic"></div><div class="t">Trusted</div><div class="d">From the House of Hare Krishna</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section>
+    <div class="sec-pad">
+      <div class="sec-head"><h2>What customers say</h2><a>See all reviews →</a></div>
+      <div class="rating-badge"><span class="big">4.8★</span><span>2,000+ verified orders</span><span class="sub">across Ready Meals, Millets &amp; Snacks</span></div>
+      <div class="rev-grid">
+        <div class="rev-card">
+          <div class="rev-thumb placeholder">Customer photo</div>
+          <div class="rev-stars">★★★★★</div>
+          <div class="rev-quote">"Satvik flavours are so clean and light — nothing heavy, nothing artificial."</div>
+          <div class="rev-name">Shriya, Pune</div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-thumb placeholder">Customer video</div>
+          <div class="rev-stars">★★★★★</div>
+          <div class="rev-quote">"Finally healthy noodles I can give my kids without guilt."</div>
+          <div class="rev-name">Aparna, Hyderabad</div>
+        </div>
+        <div class="rev-card">
+          <div class="rev-thumb placeholder">Customer photo</div>
+          <div class="rev-stars">★★★★☆</div>
+          <div class="rev-quote">"Tastes homely — like it was made with real care."</div>
+          <div class="rev-name">Karthik, Bengaluru</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECIPES -->
+  <section>
+    <div class="sec-pad">
+      <div class="sec-head"><h2>Recipes &amp; stories</h2><a>Visit the blog →</a></div>
+      <div class="rec-grid">
+        <div class="rec-card">
+          <div class="rec-img placeholder">Recipe photo</div>
+          <div class="rec-body"><div class="t">5 Sattvic Breakfasts for Busy Mornings</div><div class="m">Read more</div></div>
+        </div>
+        <div class="rec-card">
+          <div class="rec-img placeholder">Recipe photo</div>
+          <div class="rec-body"><div class="t">What Makes Food Truly Hare Krishna?</div><div class="m">Read more</div></div>
+        </div>
+        <div class="rec-card">
+          <div class="rec-img placeholder">Recipe photo</div>
+          <div class="rec-body"><div class="t">Millets 101: A Sattvic Kitchen Staple</div><div class="m">Read more</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section>
+    <div class="newsletter">
+      <h2>Join the Vasudha family</h2>
+      <p>Get early access to festival packs, recipes, and members-only offers</p>
+      <div class="email-row">
+        <div class="email-input">you@email.com</div>
+        <span class="btn primary">Subscribe</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <section>
+    <div class="footer">
+      <div class="footer-heritage">
+        <div class="glyph"></div>
+        <div>
+          <div class="t">Vasudha Foods is proudly from the House of Hare Krishna</div>
+          <div class="s">What is Sattvic food? →</div>
+        </div>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-col"><div class="h">Shop</div><div class="l">Ready Meals<br>Millets<br>Snacks<br>Combos</div></div>
+        <div class="footer-col"><div class="h">Support</div><div class="l">About Us<br>Contact Us<br>Shipping<br>Returns</div></div>
+        <div class="footer-col"><div class="h">Policies</div><div class="l">Privacy Policy<br>Terms of Service<br>Refund Policy</div></div>
+        <div class="footer-col"><div class="h">Recipes &amp; Blog</div><div class="l">Sattvic Recipes<br>Millet Guides<br>ISKCON &amp; Heritage<br>All Articles</div></div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Vasudha Foods. All rights reserved.</span>
+        <div class="socials"><div class="soc-ic"></div><div class="soc-ic"></div><div class="soc-ic"></div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
